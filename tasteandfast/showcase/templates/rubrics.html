@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static%}
+{% load showcase_tags%}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+<!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous"></head>
+<body>
+{% block content %}
+{% getrubs as rubrics %}
+<content class="align-items-center">
+<div class="container-xxl">
+    {% for rubric in rubrics %}
+    <div class="row align-items-center">
+
+<div class="col-8">
+    <img  role="button" class="w-100" src= "{{rubric.image.url}}" alt="" >
+</div>
+    <div class="col-4">
+        <h2 role="button">
+            <a href="{{ rubric.get_absolute_url }}">
+            <span
+                    class="badge bg-secondary">{{ rubric.name }}
+            </span>
+            </a>
+        </h2>
+    </div>
+</div>
+    {% endfor %}
+</div>
+</content>
+{% endblock %}
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+</body>
+</html>
